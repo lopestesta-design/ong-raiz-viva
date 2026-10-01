@@ -108,15 +108,14 @@
 
   /* ---------- Envio ---------- */
   var form = document.getElementById("form-cadastro");
-  var sucesso = document.getElementById("sucesso");
+  var modalSucesso = document.getElementById("modal-sucesso");
 
   form.addEventListener("submit", function (evento) {
     evento.preventDefault(); // não há servidor neste trabalho: simulamos o envio
     var primeiroNome = document.getElementById("nome").value.trim().split(" ")[0];
     document.getElementById("sucesso-texto").textContent =
       "Obrigado, " + primeiroNome + "! Seu cadastro foi recebido e entraremos em contato em breve.";
-    sucesso.hidden = false;
-    sucesso.focus();
+    modalSucesso.showModal();
     form.reset();
     atualizarObrigatorios();
   });
