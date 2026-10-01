@@ -8,7 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navegacao.css">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
@@ -19,12 +23,25 @@
         <img src="img/logo.svg" alt="" width="44" height="44">
         <span>Instituto Raiz Viva</span>
       </a>
-      <nav aria-label="Navegação principal">
-        <ul class="menu">
-          <li><a href="index.html" aria-current="page">Início</a></li>
-          <li><a href="pages/projetos.html">Projetos sociais</a></li>
-          <li><a href="pages/cadastro.html">Seja doador ou voluntário</a></li>
-        </ul>
+      <nav class="nav" aria-label="Navegação principal">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+          <span class="menu-toggle__barras" aria-hidden="true"></span>
+        </button>
+        <div class="menu-painel" id="menu-principal">
+          <ul class="menu">
+            <li><a href="index.html" aria-current="page">Início</a></li>
+            <li class="has-submenu">
+              <a href="pages/projetos.html">Projetos sociais</a>
+              <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-projetos" aria-label="Mostrar projetos"></button>
+              <ul class="submenu" id="submenu-projetos">
+                <li><a href="pages/projetos.html#projeto-hortas">Hortas Comunitárias</a></li>
+                <li><a href="pages/projetos.html#projeto-oficinas">Oficinas Cozinha Inteira</a></li>
+                <li><a href="pages/projetos.html#projeto-cestas">Cestas Solidárias</a></li>
+              </ul>
+            </li>
+            <li><a href="pages/cadastro.html">Seja doador ou voluntário</a></li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
@@ -37,13 +54,14 @@
         <div class="acoes">
           <a class="botao" href="pages/cadastro.html">Quero ajudar</a>
           <a class="botao botao--secundario" href="pages/projetos.html">Conhecer os projetos</a>
+          <button type="button" class="botao botao--secundario" data-abrir-modal="modal-doacao">Como funciona a doação?</button>
         </div>
       </div>
     </section>
 
     <section class="secao" aria-labelledby="titulo-sobre">
-      <div class="container duas-colunas">
-        <div>
+      <div class="container grid">
+        <div class="col-12 col-md-6 col-xl-7">
           <h2 id="titulo-sobre">Quem somos</h2>
           <p>O Instituto Raiz Viva é uma organização da sociedade civil sem fins lucrativos. Nasceu de um mutirão de vizinhos que transformou um terreno abandonado em horta e hoje atua em vários bairros da cidade.</p>
           <p>Acreditamos que alimentação de qualidade é um direito e que comunidade organizada muda a realidade.</p>
@@ -56,7 +74,7 @@
             <figcaption>Cada fileira é plantada em mutirão pelos moradores do bairro.</figcaption>
           </figure>
         </div>
-        <div>
+        <div class="col-12 col-md-6 col-xl-5">
           <h2>Missão e valores</h2>
           <ul>
             <li><strong>Missão:</strong> garantir acesso a alimento saudável e a conhecimento para produzi-lo.</li>
@@ -70,11 +88,11 @@
     <section class="secao secao--suave" aria-labelledby="titulo-numeros">
       <div class="container">
         <h2 id="titulo-numeros">Nosso trabalho em números</h2>
-        <ul class="numeros">
-          <li><strong>12</strong> hortas comunitárias ativas</li>
-          <li><strong>850</strong> famílias atendidas por mês</li>
-          <li><strong>140</strong> voluntários e voluntárias</li>
-          <li><strong>6 anos</strong> de atuação</li>
+        <ul class="numeros grid">
+          <li class="col-6 col-lg-3"><strong>12</strong> hortas comunitárias ativas</li>
+          <li class="col-6 col-lg-3"><strong>850</strong> famílias atendidas por mês</li>
+          <li class="col-6 col-lg-3"><strong>140</strong> voluntários e voluntárias</li>
+          <li class="col-6 col-lg-3"><strong>6 anos</strong> de atuação</li>
         </ul>
         <p><small>Números fictícios, usados como exemplo neste trabalho acadêmico.</small></p>
       </div>
@@ -83,18 +101,18 @@
     <section class="secao" aria-labelledby="titulo-ajudar">
       <div class="container">
         <h2 id="titulo-ajudar">Como você pode ajudar</h2>
-        <div class="caminhos">
-          <article class="caminho">
+        <div class="grid">
+          <article class="card card--link col-12 col-md-4">
             <h3>Doe</h3>
             <p>Qualquer valor vira sementes, ferramentas e cestas. Você escolhe se quer doar uma vez ou todo mês.</p>
             <a href="pages/cadastro.html">Cadastrar como doador</a>
           </article>
-          <article class="caminho">
+          <article class="card card--link col-12 col-md-4">
             <h3>Seja voluntário</h3>
             <p>Ajude no plantio, nas oficinas, na organização das entregas ou na comunicação. Você define o tempo que tem.</p>
             <a href="pages/cadastro.html">Cadastrar como voluntário</a>
           </article>
-          <article class="caminho">
+          <article class="card card--link col-12 col-md-4">
             <h3>Conheça os projetos</h3>
             <p>Veja onde atuamos, quem atendemos e como cada iniciativa funciona.</p>
             <a href="pages/projetos.html">Ver projetos sociais</a>
@@ -105,8 +123,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <section aria-labelledby="rodape-contato">
+    <div class="container grid">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-contato">
         <h2 id="rodape-contato">Contato</h2>
         <address>
           Rua das Acácias, 120 - Centro<br>
@@ -115,7 +133,7 @@
           <a href="tel:+551200000000">(12) 0000-0000</a>
         </address>
       </section>
-      <section aria-labelledby="rodape-mapa">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-mapa">
         <h2 id="rodape-mapa">Mapa do site</h2>
         <ul>
           <li><a href="index.html">Início</a></li>
@@ -123,8 +141,25 @@
           <li><a href="pages/cadastro.html">Cadastro</a></li>
         </ul>
       </section>
-      <p><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática I de Desenvolvimento Front-end.</small></p>
+      <p class="col-12 col-md-4"><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática I de Desenvolvimento Front-end.</small></p>
     </div>
   </footer>
+  <dialog class="modal" id="modal-doacao" aria-labelledby="modal-doacao-titulo">
+    <div class="modal__corpo">
+      <h2 id="modal-doacao-titulo">Como funciona a doação</h2>
+      <p>Qualquer valor ajuda, e você pode doar uma vez ou todo mês.</p>
+      <ol>
+        <li>Preencha o cadastro e escolha a opção "Doador".</li>
+        <li>Informe o valor mensal, a partir de R$ 10.</li>
+        <li>Receba por e-mail os dados de pagamento e o relatório de uso dos recursos.</li>
+      </ol>
+      <form method="dialog" class="modal__acoes">
+        <a class="botao" href="pages/cadastro.html">Quero doar</a>
+        <button class="botao botao--secundario">Fechar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="js/menu.js"></script>
 </body>
 </html>
