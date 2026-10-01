@@ -2,7 +2,7 @@
    TOKENS DO DESIGN SYSTEM - Instituto Raiz Viva
    Única fonte de verdade para cores, tipografia e espaçamentos.
    Breakpoints (media queries não aceitam var()):
-     sm 36rem (576px) | md 48rem (768px) | lg 62rem (992px) | xl 75rem (1200px)
+     sm 36rem (576px) | md 48rem (768px) | lg 62rem (992px) | xl 75rem (1200px) | xxl 90rem (1440px)
    ========================================================== */
 :root {
   /* ----- Cores: paleta primitiva ----- */
