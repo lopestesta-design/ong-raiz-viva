@@ -1,0 +1,123 @@
+/* ==========================================================
+   COMPONENTES: usam apenas tokens e Flexbox/Grid
+   ========================================================== */
+
+/* ----- Cabeçalho e navegação (Flexbox) ----- */
+.site-header { background: var(--color-brand-dark); color: var(--white); }
+.site-header .container {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-3);
+}
+.marca {
+  display: flex; align-items: center; gap: var(--space-3);
+  color: var(--white); text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: var(--text-lg);
+}
+.marca img { width: 44px; height: 44px; }
+.menu { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); list-style: none; margin: 0; padding: 0; }
+.menu a {
+  color: var(--white); text-decoration: none;
+  padding: var(--space-2) 0; border-bottom: 3px solid transparent;
+}
+.menu a:hover { border-bottom-color: var(--color-accent); color: var(--white); }
+.menu a[aria-current="page"] { border-bottom-color: var(--color-accent); font-weight: var(--weight-semibold); }
+
+/* ----- Botões (Flexbox para centralizar o conteúdo) ----- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid transparent; border-radius: var(--radius-md);
+  background: var(--color-accent); color: var(--color-heading);
+  font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: 1rem;
+  text-decoration: none; cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.botao:hover { background: var(--color-accent-strong); color: var(--color-heading); }
+.botao--secundario { background: transparent; border-color: var(--color-heading); }
+.botao--secundario:hover { background: var(--color-heading); color: var(--white); }
+
+/* ----- Hero ----- */
+.hero { background: var(--color-surface-alt); }
+.hero::after {
+  /* sulcos de plantio: assinatura visual da marca */
+  content: ""; display: block; height: 56px;
+  background: repeating-linear-gradient(90deg, var(--color-primary) 0 14px, transparent 14px 28px);
+}
+.hero .container { padding-block: clamp(var(--space-7), 8vw, var(--space-8)) clamp(var(--space-6), 6vw, var(--space-7)); }
+.hero p { font-size: var(--text-lg); }
+.hero .acoes { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+
+/* ----- Números de impacto ----- */
+.numeros { list-style: none; margin: var(--space-5) 0 var(--space-4); padding: 0; }
+.numeros li { border-left: 5px solid var(--color-accent); padding-left: var(--space-4); }
+.numeros strong { display: block; font-family: var(--font-heading); font-size: var(--text-2xl); color: var(--color-heading); line-height: 1; }
+
+/* ----- Cartão (Flexbox em coluna: o link/botão fica sempre no rodapé) ----- */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md); padding: var(--space-5);
+}
+.card > :last-child { margin-top: auto; margin-bottom: 0; }
+.card p { margin-bottom: var(--space-2); }
+
+/* ----- Projetos (cartão + lista de definição) ----- */
+.projeto header { margin-bottom: var(--space-2); }
+.projeto dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-4); margin: 0; }
+.projeto dt { font-weight: var(--weight-bold); color: var(--color-heading); }
+.projeto dd { margin: 0; }
+
+/* ----- Figura ----- */
+.figura { margin: var(--space-5) 0 0; }
+.figura img { display: block; width: 100%; border-radius: var(--radius-md); }
+.figura figcaption { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); }
+
+/* ----- Tabela ----- */
+.tabela-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--color-surface); }
+caption { text-align: left; font-family: var(--font-heading); font-weight: var(--weight-bold); padding-bottom: var(--space-2); color: var(--color-heading); }
+th, td { text-align: left; padding: var(--space-3) var(--space-3); border-bottom: 1px solid var(--color-border); }
+thead th { background: var(--color-brand-dark); color: var(--white); }
+tbody th { font-weight: var(--weight-bold); }
+
+/* ----- Formulário ----- */
+.formulario { display: grid; gap: var(--space-5); max-width: 46rem; }
+fieldset {
+  min-width: 0; margin-inline: 0; background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md); padding: var(--space-4) var(--space-5) var(--space-5);
+}
+legend { font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: var(--text-lg); color: var(--color-heading); padding-inline: var(--space-2); }
+.campo { display: flex; flex-direction: column; gap: var(--space-1); }
+label { font-weight: var(--weight-semibold); color: var(--color-heading); }
+.dica { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+  width: 100%; font: inherit; color: var(--color-text); background: var(--color-surface);
+  padding: var(--space-3); border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-sm);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: var(--focus-ring); outline-offset: 1px; border-color: var(--color-heading);
+}
+/* feedback só depois que a pessoa interagiu com o campo */
+input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: var(--color-danger); background: var(--color-danger-bg); }
+input:user-valid, select:user-valid { border-color: var(--color-success); }
+
+.opcoes { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+.opcao { display: flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-regular); color: var(--color-text); }
+.opcao input { width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); }
+.subgrupo { border: 0; padding: 0; }
+.subgrupo legend { padding: 0; font-size: 1rem; margin-bottom: var(--space-2); }
+.form-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.mensagem-sucesso { border: var(--border-width) solid var(--color-success); background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-5); }
+.mensagem-sucesso[hidden] { display: none; }
+
+/* ----- Rodapé (o grid de 12 colunas vem do HTML) ----- */
+.site-footer { background: var(--color-brand-dark); color: #E4E9F2; padding-block: var(--space-7); font-size: var(--text-sm); }
+.site-footer a { color: var(--color-accent); }
+.site-footer address { font-style: normal; }
+.site-footer h2 { color: var(--white); font-size: var(--text-lg); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
