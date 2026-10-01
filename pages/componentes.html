@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de componentes | Instituto Raiz Viva</title>
+  <meta name="description" content="Guia de componentes de feedback do Instituto Raiz Viva: badges, alertas, toasts e modais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/navegacao.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="marca" href="../index.html">
+        <img src="../img/logo.svg" alt="" width="44" height="44">
+        <span>Instituto Raiz Viva</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+          <span class="menu-toggle__barras" aria-hidden="true"></span>
+        </button>
+        <div class="menu-painel" id="menu-principal">
+          <ul class="menu">
+            <li><a href="../index.html">Início</a></li>
+            <li class="has-submenu">
+              <a href="projetos.html">Projetos sociais</a>
+              <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-projetos" aria-label="Mostrar projetos"></button>
+              <ul class="submenu" id="submenu-projetos">
+                <li><a href="projetos.html#projeto-hortas">Hortas Comunitárias</a></li>
+                <li><a href="projetos.html#projeto-oficinas">Oficinas Cozinha Inteira</a></li>
+                <li><a href="projetos.html#projeto-cestas">Cestas Solidárias</a></li>
+              </ul>
+            </li>
+            <li><a href="cadastro.html">Seja doador ou voluntário</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao" aria-labelledby="titulo-guia">
+      <div class="container">
+        <h1 id="titulo-guia">Guia de componentes</h1>
+        <p>Componentes de feedback padronizados com as cores do design system. Cada exemplo traz o código HTML para reutilizar em novas páginas ou em telas geradas pelo back-end.</p>
+      </div>
+    </section>
+
+    <section class="secao secao--suave" aria-labelledby="titulo-badges">
+      <div class="container">
+        <h2 id="titulo-badges">Badges</h2>
+        <p>Etiquetas curtas que classificam uma informação, como a situação de um projeto.</p>
+        <ul class="guia-lista">
+          <li><span class="badge">Informação</span></li>
+          <li><span class="badge badge--sucesso">Vagas abertas</span></li>
+          <li><span class="badge badge--aviso">Precisa de doações</span></li>
+          <li><span class="badge badge--erro">Inscrições encerradas</span></li>
+          <li><span class="badge badge--neutro">Em breve</span></li>
+        </ul>
+        <pre class="guia-codigo"><code>&lt;span class="badge badge--sucesso"&gt;Vagas abertas&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="titulo-alertas">
+      <div class="container">
+        <h2 id="titulo-alertas">Alertas</h2>
+        <p>Mensagens fixas dentro da página. Use <code>role="alert"</code> só para erros e <code>role="status"</code> ou <code>role="note"</code> nos demais.</p>
+        <p class="alerta" role="note">Informação: seus dados são usados somente para contato do Instituto.</p>
+        <p class="alerta alerta--sucesso" role="status">Sucesso: seu cadastro foi enviado com êxito.</p>
+        <p class="alerta alerta--aviso" role="note">Aviso: o prazo para se inscrever nas oficinas termina na sexta-feira.</p>
+        <p class="alerta alerta--erro" role="alert">Erro: não foi possível enviar o formulário. Confira os campos em vermelho.</p>
+        <pre class="guia-codigo"><code>&lt;p class="alerta alerta--erro" role="alert"&gt;Mensagem&lt;/p&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="secao secao--suave" aria-labelledby="titulo-toasts">
+      <div class="container">
+        <h2 id="titulo-toasts">Toasts</h2>
+        <p>Notificações rápidas que aparecem no canto da tela e somem sozinhas, sem interromper o que a pessoa está fazendo.</p>
+        <div class="guia-acoes">
+          <button type="button" class="botao" data-toast="Cadastro enviado com sucesso!" data-toast-tipo="sucesso">Toast de sucesso</button>
+          <button type="button" class="botao botao--secundario" data-toast="O prazo das inscrições termina na sexta." data-toast-tipo="aviso">Toast de aviso</button>
+          <button type="button" class="botao botao--secundario" data-toast="Não foi possível salvar. Tente novamente." data-toast-tipo="erro">Toast de erro</button>
+        </div>
+        <pre class="guia-codigo mt-4"><code>mostrarToast("Cadastro enviado!", "sucesso");</code></pre>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="titulo-modal">
+      <div class="container">
+        <h2 id="titulo-modal">Modal</h2>
+        <p>Janela de informação que pede a atenção da pessoa. Usa o elemento nativo <code>&lt;dialog&gt;</code>, que já prende o foco e fecha com a tecla Esc.</p>
+        <button type="button" class="botao" data-abrir-modal="modal-exemplo">Abrir modal</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container grid">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-contato">
+        <h2 id="rodape-contato">Contato</h2>
+        <address>
+          Rua das Acácias, 120 - Centro<br>
+          Taubaté - SP, 12000-000<br>
+          <a href="mailto:contato@raizviva.example">contato@raizviva.example</a><br>
+          <a href="tel:+551200000000">(12) 0000-0000</a>
+        </address>
+      </section>
+      <section class="col-12 col-md-4" aria-labelledby="rodape-mapa">
+        <h2 id="rodape-mapa">Mapa do site</h2>
+        <ul>
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos sociais</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+          <li><a href="componentes.html">Guia de componentes</a></li>
+        </ul>
+      </section>
+      <p class="col-12 col-md-4"><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática I de Desenvolvimento Front-end.</small></p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal-exemplo" aria-labelledby="modal-exemplo-titulo">
+    <div class="modal__corpo">
+      <h2 id="modal-exemplo-titulo">Quer ser voluntário?</h2>
+      <span class="badge badge--sucesso">Vagas abertas</span>
+      <p class="mt-4">Temos vagas nas hortas e nas oficinas de cozinha. Você escolhe o dia e o horário.</p>
+      <form method="dialog" class="modal__acoes">
+        <a class="botao" href="cadastro.html">Quero me cadastrar</a>
+        <button class="botao botao--secundario">Agora não</button>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast-area" role="status" aria-live="polite"></div>
+
+  <script src="../js/menu.js"></script>
+  <script src="../js/feedback.js"></script>
+</body>
+</html>
