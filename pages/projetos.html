@@ -8,7 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/navegacao.css">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
@@ -19,12 +23,25 @@
         <img src="../img/logo.svg" alt="" width="44" height="44">
         <span>Instituto Raiz Viva</span>
       </a>
-      <nav aria-label="Navegação principal">
-        <ul class="menu">
-          <li><a href="../index.html">Início</a></li>
-          <li><a href="projetos.html" aria-current="page">Projetos sociais</a></li>
-          <li><a href="cadastro.html">Seja doador ou voluntário</a></li>
-        </ul>
+      <nav class="nav" aria-label="Navegação principal">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+          <span class="menu-toggle__barras" aria-hidden="true"></span>
+        </button>
+        <div class="menu-painel" id="menu-principal">
+          <ul class="menu">
+            <li><a href="../index.html">Início</a></li>
+            <li class="has-submenu">
+              <a href="projetos.html" aria-current="page">Projetos sociais</a>
+              <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-projetos" aria-label="Mostrar projetos"></button>
+              <ul class="submenu" id="submenu-projetos">
+                <li><a href="projetos.html#projeto-hortas">Hortas Comunitárias</a></li>
+                <li><a href="projetos.html#projeto-oficinas">Oficinas Cozinha Inteira</a></li>
+                <li><a href="projetos.html#projeto-cestas">Cestas Solidárias</a></li>
+              </ul>
+            </li>
+            <li><a href="cadastro.html">Seja doador ou voluntário</a></li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
@@ -35,7 +52,8 @@
         <h1 id="titulo-projetos">Projetos sociais</h1>
         <p>Três iniciativas que se completam: quem planta, aprende a cozinhar e ainda ajuda a abastecer quem está sem comida hoje.</p>
 
-        <article class="projeto" aria-labelledby="projeto-hortas">
+        <div class="grid">
+        <article class="card projeto col-12 col-sm-6 col-lg-4" aria-labelledby="projeto-hortas">
           <header>
             <h2 id="projeto-hortas">Hortas Comunitárias</h2>
           </header>
@@ -47,7 +65,7 @@
           </dl>
         </article>
 
-        <article class="projeto" aria-labelledby="projeto-oficinas">
+        <article class="card projeto col-12 col-sm-6 col-lg-4" aria-labelledby="projeto-oficinas">
           <header>
             <h2 id="projeto-oficinas">Oficinas Cozinha Inteira</h2>
           </header>
@@ -59,7 +77,7 @@
           </dl>
         </article>
 
-        <article class="projeto" aria-labelledby="projeto-cestas">
+        <article class="card projeto col-12 col-sm-6 col-lg-4" aria-labelledby="projeto-cestas">
           <header>
             <h2 id="projeto-cestas">Cestas Solidárias</h2>
           </header>
@@ -70,6 +88,7 @@
             <dt>Quem participa</dt><dd>Doadores, motoristas e voluntários de separação</dd>
           </dl>
         </article>
+        </div>
       </div>
     </section>
 
@@ -101,8 +120,8 @@
     <section class="secao" aria-labelledby="titulo-participar">
       <div class="container">
         <h2 id="titulo-participar">Como participar</h2>
-        <div class="caminhos">
-          <article class="caminho" aria-labelledby="como-doar">
+        <div class="grid">
+          <article class="card col-12 col-md-6" aria-labelledby="como-doar">
             <h3 id="como-doar">Quero doar</h3>
             <p>Sua doação mensal financia sementes, ferramentas e as cestas solidárias.</p>
             <ol>
@@ -112,7 +131,7 @@
             </ol>
             <a class="botao" href="cadastro.html">Cadastrar como doador</a>
           </article>
-          <article class="caminho" aria-labelledby="como-voluntariar">
+          <article class="card col-12 col-md-6" aria-labelledby="como-voluntariar">
             <h3 id="como-voluntariar">Quero ser voluntário</h3>
             <p>Você escolhe a área e o horário. Não precisa de experiência prévia.</p>
             <ol>
@@ -128,8 +147,8 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <section aria-labelledby="rodape-contato">
+    <div class="container grid">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-contato">
         <h2 id="rodape-contato">Contato</h2>
         <address>
           Rua das Acácias, 120 - Centro<br>
@@ -138,7 +157,7 @@
           <a href="tel:+551200000000">(12) 0000-0000</a>
         </address>
       </section>
-      <section aria-labelledby="rodape-mapa">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-mapa">
         <h2 id="rodape-mapa">Mapa do site</h2>
         <ul>
           <li><a href="../index.html">Início</a></li>
@@ -146,8 +165,9 @@
           <li><a href="cadastro.html">Cadastro</a></li>
         </ul>
       </section>
-      <p><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática I de Desenvolvimento Front-end.</small></p>
+      <p class="col-12 col-md-4"><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática I de Desenvolvimento Front-end.</small></p>
     </div>
   </footer>
+  <script src="../js/menu.js"></script>
 </body>
 </html>
